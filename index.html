@@ -1,191 +1,124 @@
 <!doctype html>
 <html lang="ar" dir="rtl">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-  <meta name="theme-color" content="#087f8c">
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="default">
-  <meta name="apple-mobile-web-app-title" content="Oyster Farm Manager">
-  <meta name="description" content="Oyster Farm Manager - إدارة وحسابات مزرعة المحار">
-  <link rel="manifest" href="manifest.json">
-  <link rel="apple-touch-icon" href="icon.png">
-  <style>:root{
-  --bg:#eef8f9;--card:#fff;--text:#12343b;--muted:#6b858b;--primary:#087f8c;
-  --primary2:#0aa7a8;--border:#d8e8ea;--danger:#b83a4b;--shadow:0 12px 30px rgba(12,74,84,.09);
-}
-*{box-sizing:border-box}
-html,body{margin:0;min-height:100%;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;background:var(--bg);color:var(--text)}
-body{padding-bottom:82px}
-button,input,select{font:inherit}
-button{cursor:pointer}
-.app-shell{max-width:760px;margin:auto}
-.topbar{height:74px;padding:12px 18px;display:flex;align-items:center;justify-content:space-between;background:rgba(255,255,255,.9);backdrop-filter:blur(12px);position:sticky;top:0;z-index:10;border-bottom:1px solid var(--border)}
-.brand{display:flex;align-items:center;gap:10px}.brand strong{display:block;font-size:15px}.brand span{display:block;color:var(--muted);font-size:12px;margin-top:2px}
-.logo{width:42px;height:42px}.icon-btn{width:42px;height:42px;border:1px solid var(--border);background:var(--card);border-radius:14px;color:var(--text)}
-main{padding:18px}
-.screen{display:none;animation:fade .18s ease}.screen.active{display:block}@keyframes fade{from{opacity:.3;transform:translateY(5px)}to{opacity:1;transform:none}}
-.hero{background:linear-gradient(135deg,#066d79,#11a5a2);color:white;border-radius:24px;padding:24px;box-shadow:var(--shadow);margin-bottom:16px}
-.hero h1{margin:6px 0;font-size:27px}.hero p{margin:0;opacity:.9}.eyebrow{font-weight:700;font-size:13px}
-.stats{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:16px}.stat{background:var(--card);border:1px solid var(--border);border-radius:18px;padding:15px;box-shadow:var(--shadow)}.stat span{font-size:22px}.stat small{display:block;color:var(--muted);margin:8px 0 3px}.stat b{font-size:22px}
-.grid-buttons{display:grid;grid-template-columns:1fr 1fr;gap:12px}.menu-card{text-align:right;border:1px solid var(--border);background:var(--card);border-radius:18px;padding:18px;box-shadow:var(--shadow);color:var(--text)}.menu-card span{font-size:26px;display:block;margin-bottom:12px}.menu-card b,.menu-card small{display:block}.menu-card small{color:var(--muted);margin-top:4px}
-.section-head{display:flex;align-items:center;gap:10px;margin:4px 0 18px}.section-head h2{margin:0;font-size:23px}.section-head p{margin:4px 0 0;color:var(--muted)}.back{border:0;background:var(--card);border:1px solid var(--border);border-radius:13px;width:44px;height:44px;font-size:30px;line-height:1}
-.card{background:var(--card);border:1px solid var(--border);border-radius:20px;padding:18px;box-shadow:var(--shadow)}label{display:block;font-weight:700;margin:0 0 7px}input,select{width:100%;padding:14px;border:1px solid #c9dfe2;background:var(--bg);border-radius:13px;color:var(--text);margin-bottom:15px;outline:none}input:focus,select:focus{border-color:var(--primary)}
-.primary,.danger{width:100%;border:0;border-radius:14px;padding:14px;color:white;font-weight:800}.primary{background:linear-gradient(135deg,var(--primary),var(--primary2))}.danger{background:var(--danger);margin-top:14px}
-.result{margin-top:15px;background:var(--card);border:1px solid var(--border);border-radius:20px;padding:18px;box-shadow:var(--shadow)}.hidden{display:none}.result-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}.result-item{background:var(--bg);border-radius:15px;padding:14px}.result-item small{display:block;color:var(--muted);margin-bottom:5px}.result-item b{font-size:22px}
-.history-list{display:grid;gap:10px}.history-item{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:14px}.history-item time{color:var(--muted);font-size:12px}.history-item strong{display:block;margin:5px 0}.about{margin-top:12px;padding:15px;background:var(--bg);border-radius:15px}.about>*{display:block;margin:4px 0}.about span{color:var(--muted);font-size:13px}
-.bottom-nav{position:fixed;bottom:0;left:0;right:0;max-width:760px;margin:auto;height:70px;background:rgba(255,255,255,.95);backdrop-filter:blur(16px);border-top:1px solid var(--border);display:grid;grid-template-columns:repeat(4,1fr);z-index:20;padding-bottom:env(safe-area-inset-bottom)}.nav-item{border:0;background:transparent;color:var(--muted);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px}.nav-item span{font-size:20px}.nav-item small{font-size:11px}.nav-item.active{color:var(--primary);font-weight:800}
-.dark{--bg:#0c2024;--card:#122c31;--text:#e7f5f6;--muted:#9cb8bc;--border:#25484e;--shadow:0 12px 30px rgba(0,0,0,.22)}.dark .topbar,.dark .bottom-nav{background:rgba(18,44,49,.95)}
-@media(min-width:650px){main{padding:28px}.stats{grid-template-columns:repeat(4,1fr)}.grid-buttons{grid-template-columns:repeat(4,1fr)}}
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#087f8c">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="Oyster Farm Manager">
+<link rel="manifest" href="manifest.json">
+<link rel="apple-touch-icon" href="icon.svg">
+<title>Oyster Farm Manager</title>
+<style>
+:root{--bg:#eef8f9;--card:#fff;--text:#12343b;--muted:#6b858b;--primary:#087f8c;--accent:#10aaa6;--border:#d7e8ea;--danger:#b83a4b}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;padding-bottom:82px}.app{max-width:760px;margin:auto}.top{height:70px;background:rgba(255,255,255,.94);border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;padding:10px 16px;position:sticky;top:0;z-index:5}.brand{display:flex;gap:10px;align-items:center}.brand img{width:44px;height:44px}.brand b{display:block}.brand small{color:var(--muted)}button,input,select{font:inherit}button{cursor:pointer}.icon{border:1px solid var(--border);background:var(--card);border-radius:13px;width:42px;height:42px}.screen{display:none;padding:18px}.screen.active{display:block}.hero{padding:22px;border-radius:22px;background:linear-gradient(135deg,#066d79,#10aaa6);color:#fff;margin-bottom:14px}.hero h1{margin:4px 0 6px;font-size:27px}.hero p{margin:0;opacity:.9}.stats{display:grid;grid-template-columns:1fr 1fr;gap:10px}.stat,.card,.menu{background:var(--card);border:1px solid var(--border);border-radius:18px;padding:15px;box-shadow:0 8px 24px rgba(10,80,90,.07)}.stat small{display:block;color:var(--muted);margin:6px 0}.stat b{font-size:21px}.menus{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:12px}.menu{border:0;text-align:right;color:var(--text)}.menu span{font-size:24px;display:block;margin-bottom:9px}.menu small{display:block;color:var(--muted);margin-top:3px}.head{display:flex;gap:10px;align-items:center;margin-bottom:15px}.back{border:1px solid var(--border);background:var(--card);border-radius:12px;width:44px;height:44px;font-size:28px}.head h2{margin:0}.head p{margin:3px 0;color:var(--muted)}label{display:block;font-weight:700;margin:0 0 6px}input,select{width:100%;padding:13px;border:1px solid #c8dfe2;border-radius:12px;background:var(--bg);color:var(--text);margin-bottom:13px}.primary,.danger{width:100%;padding:13px;border:0;border-radius:13px;color:#fff;font-weight:800}.primary{background:linear-gradient(135deg,var(--primary),var(--accent))}.danger{background:var(--danger);margin-top:12px}.result{margin-top:13px}.grid{display:grid;grid-template-columns:1fr 1fr;gap:9px}.item{background:var(--bg);border-radius:13px;padding:12px}.item small{display:block;color:var(--muted);margin-bottom:4px}.item b{font-size:20px}.stage{display:flex;justify-content:space-between;padding:11px 0;border-bottom:1px solid var(--border)}.stage:last-child{border:0}.note{color:var(--muted);font-size:13px;line-height:1.6}.history{display:grid;gap:9px}.history .card{box-shadow:none}.history time{font-size:11px;color:var(--muted)}.about{margin-top:12px;background:var(--bg);border-radius:13px;padding:13px}.about>*{display:block;margin:4px 0}.about span{color:var(--muted);font-size:13px}.nav{position:fixed;bottom:0;left:0;right:0;max-width:760px;margin:auto;height:70px;background:rgba(255,255,255,.96);border-top:1px solid var(--border);display:grid;grid-template-columns:repeat(4,1fr);z-index:9}.nav button{border:0;background:transparent;color:var(--muted);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px}.nav button.active{color:var(--primary);font-weight:800}.dark{--bg:#0b2024;--card:#122c31;--text:#e8f6f7;--muted:#9ab6bb;--border:#27484e}.dark .top,.dark .nav{background:rgba(18,44,49,.96)}
+@media(min-width:650px){.stats{grid-template-columns:repeat(4,1fr)}.menus{grid-template-columns:repeat(4,1fr)}}
 </style>
-  <title>Oyster Farm Manager</title>
 </head>
 <body>
-  <div class="app-shell">
-    <header class="topbar">
-      <div class="brand">
-        <img src="logo.svg" alt="" class="logo">
-        <div><strong>Oyster Farm Manager</strong><span id="subtitle">إدارة مزرعة المحار</span></div>
-      </div>
-      <button id="themeBtn" class="icon-btn" aria-label="الوضع الليلي">◐</button>
-    </header>
+<div class="app">
+<header class="top"><div class="brand"><img src="icon.svg"><div><b>Oyster Farm Manager</b><small id="subtitle">إدارة مزرعة المحار</small></div></div><button class="icon" id="theme">◐</button></header>
 
-    <main>
-      <section id="dashboard" class="screen active">
-        <div class="hero">
-          <p class="eyebrow" id="welcome">لوحة التحكم</p>
-          <h1 id="appTitle">Oyster Farm Manager</h1>
-          <p id="heroText">إدارة بسيطة وسريعة لمراحل تربية المحار.</p>
-        </div>
-        <div class="stats">
-          <div class="stat"><span>🦪</span><small id="statOystersLabel">المحارات الحالية</small><b id="statOysters">0</b></div>
-          <div class="stat"><span>👜</span><small id="statBagsLabel">الجيوب المطلوبة</small><b id="statBags">0</b></div>
-          <div class="stat"><span>🪜</span><small id="statTablesLabel">الطاولات المطلوبة</small><b id="statTables">0</b></div>
-          <div class="stat"><span>📉</span><small id="statMortLabel">النفوق</small><b id="statMort">0%</b></div>
-        </div>
-        <div class="grid-buttons">
-          <button class="menu-card" data-screen="calculator"><span>🧮</span><b id="goCalc">حاسبة التقسيم</b><small id="goCalcSub">الجيوب والطاولات</small></button>
-          <button class="menu-card" data-screen="mortality"><span>📉</span><b id="goMort">حاسبة النفوق</b><small id="goMortSub">الخسائر والنسبة</small></button>
-          <button class="menu-card" data-screen="history"><span>📋</span><b id="goHistory">السجل</b><small id="goHistorySub">آخر العمليات</small></button>
-          <button class="menu-card" data-screen="settings"><span>⚙️</span><b id="goSettings">الإعدادات</b><small id="goSettingsSub">اللغة والواجهة</small></button>
-        </div>
-      </section>
+<section id="home" class="screen active">
+<div class="hero"><small id="dashboard">لوحة التحكم</small><h1>Oyster Farm Manager</h1><p id="hero">إدارة مراحل تربية المحار وحساب الجيوب والطاولات.</p></div>
+<div class="stats">
+<div class="stat">🦪<small id="s1">المحارات الحالية</small><b id="dOysters">0</b></div>
+<div class="stat">👜<small id="s2">الجيوب المطلوبة</small><b id="dBags">0</b></div>
+<div class="stat">🪜<small id="s3">الطاولات المطلوبة</small><b id="dTables">0</b></div>
+<div class="stat">📉<small id="s4">النفوق</small><b id="dMort">0%</b></div>
+</div>
+<div class="menus">
+<button class="menu" data-go="calc">🧮<b id="m1">حاسبة التقسيم</b><small id="m1s">بعد النفوق</small></button>
+<button class="menu" data-go="mort">📉<b id="m2">حاسبة النفوق</b><small id="m2s">الفاقد والنسبة</small></button>
+<button class="menu" data-go="history">📋<b id="m3">السجل</b><small id="m3s">آخر العمليات</small></button>
+<button class="menu" data-go="settings">⚙️<b id="m4">الإعدادات</b><small id="m4s">إعدادات المزرعة</small></button>
+</div></section>
 
-      <section id="calculator" class="screen">
-        <div class="section-head"><button class="back" data-screen="dashboard">‹</button><div><h2 id="calcTitle">حاسبة التقسيم</h2><p id="calcDesc">احسب الجيوب والطاولات المطلوبة.</p></div></div>
-        <div class="card">
-          <label for="oysters">🦪 <span id="oystersLabel">عدد المحارات المتبقية</span></label>
-          <input id="oysters" type="number" min="0" inputmode="numeric" placeholder="700000">
-          <label for="bagCapacity">👜 <span id="bagLabel">المحارات في الجيب</span></label>
-          <input id="bagCapacity" type="number" min="1" inputmode="numeric" value="100">
-          <label for="bagsPerTable">🪜 <span id="tableLabel">الجيوب في الطاولة</span></label>
-          <input id="bagsPerTable" type="number" min="1" inputmode="numeric" value="5">
-          <button id="calculateBtn" class="primary">احسب الآن</button>
-        </div>
-        <div id="calcResult" class="result hidden"></div>
-      </section>
+<section id="calc" class="screen">
+<div class="head"><button class="back" data-go="home">‹</button><div><h2 id="ct">حاسبة التقسيم</h2><p id="cd">احسب العدد بعد النفوق ثم الجيوب والطاولات.</p></div></div>
+<div class="card">
+<label id="ol">🦪 عدد المحارات المتبقية</label><input id="oysters" type="number" min="0" inputmode="numeric" placeholder="700000">
+<label id="ml">📉 نسبة النفوق المتوقعة %</label><input id="mortRate" type="number" min="0" max="100" step="0.1" value="30">
+<label id="bl">👜 المحارات في الجيب</label><input id="bagCap" type="number" min="1" value="100">
+<label id="tl">🪜 الجيوب في الطاولة</label><input id="bagsTable" type="number" min="1" value="5">
+<button class="primary" id="calcBtn">احسب الآن</button>
+</div>
+<div class="card result" id="calcResult" style="display:none"></div>
+<div class="card result">
+<h3 id="stageTitle">مراحل مزرعتك</h3>
+<div class="stage"><b id="st1">الاستلام</b><span>116 جيب</span></div>
+<div class="stage"><b id="st2">التقسيم الأول</b><span>300 جيب</span></div>
+<div class="stage"><b id="st3">مرحلة التربية</b><span>2000 جيب</span></div>
+<p class="note" id="stageNote">هذه المراحل محفوظة كمرجع، ويمكن تطويرها لاحقًا.</p>
+</div>
+</section>
 
-      <section id="mortality" class="screen">
-        <div class="section-head"><button class="back" data-screen="dashboard">‹</button><div><h2 id="mortTitle">حاسبة النفوق</h2><p id="mortDesc">احسب الفاقد ونسبة النفوق.</p></div></div>
-        <div class="card">
-          <label for="initialOysters">🦪 <span id="initialLabel">العدد عند البداية</span></label>
-          <input id="initialOysters" type="number" min="0" inputmode="numeric" placeholder="1000000">
-          <label for="currentOysters">🦪 <span id="currentLabel">العدد الحالي</span></label>
-          <input id="currentOysters" type="number" min="0" inputmode="numeric" placeholder="700000">
-          <button id="mortalityBtn" class="primary">احسب النفوق</button>
-        </div>
-        <div id="mortResult" class="result hidden"></div>
-      </section>
+<section id="mort" class="screen">
+<div class="head"><button class="back" data-go="home">‹</button><div><h2 id="mt">حاسبة النفوق</h2><p id="md">احسب الفاقد والنسبة.</p></div></div>
+<div class="card"><label id="il">🦪 العدد عند البداية</label><input id="initial" type="number" min="0" value="1000000"><label id="cl">🦪 العدد الحالي</label><input id="current" type="number" min="0"><button class="primary" id="mortBtn">احسب النفوق</button></div>
+<div class="card result" id="mortResult" style="display:none"></div>
+</section>
 
-      <section id="history" class="screen">
-        <div class="section-head"><button class="back" data-screen="dashboard">‹</button><div><h2 id="historyTitle">السجل</h2><p id="historyDesc">آخر الحسابات المحفوظة على الجهاز.</p></div></div>
-        <div id="historyList" class="history-list"></div>
-        <button id="clearHistory" class="danger">مسح السجل</button>
-      </section>
+<section id="history" class="screen">
+<div class="head"><button class="back" data-go="home">‹</button><div><h2 id="ht">السجل</h2><p id="hd">الحسابات المحفوظة على الجهاز.</p></div></div>
+<div class="history" id="historyList"></div><button class="danger" id="clear">مسح السجل</button>
+</section>
 
-      <section id="settings" class="screen">
-        <div class="section-head"><button class="back" data-screen="dashboard">‹</button><div><h2 id="settingsTitle">الإعدادات</h2><p id="settingsDesc">تخصيص التطبيق.</p></div></div>
-        <div class="card settings-card">
-          <label for="language">🌐 <span id="languageLabel">اللغة</span></label>
-          <select id="language">
-            <option value="ar">العربية</option>
-            <option value="fr">Français</option>
-            <option value="en">English</option>
-          </select>
-          <div class="about">
-            <b>🦪 Oyster Farm Manager</b>
-            <span id="version">الإصدار 1.0.0</span>
-            <span id="offline">يعمل بدون إنترنت بعد التثبيت</span>
-          </div>
-        </div>
-      </section>
-    </main>
+<section id="settings" class="screen">
+<div class="head"><button class="back" data-go="home">‹</button><div><h2 id="setT">الإعدادات</h2><p id="setD">إعدادات مزرعتك.</p></div></div>
+<div class="card">
+<label id="langL">🌐 اللغة</label><select id="lang"><option value="ar">العربية</option><option value="fr">Français</option><option value="en">English</option></select>
+<label id="dmL">📉 النفوق الافتراضي %</label><input id="dm" type="number" value="30" min="0" max="100" step=".1">
+<label id="dbL">👜 المحارات الافتراضية في الجيب</label><input id="db" type="number" value="100" min="1">
+<label id="dtL">🪜 الجيوب الافتراضية في الطاولة</label><input id="dt" type="number" value="5" min="1">
+<button class="primary" id="save">حفظ إعدادات المزرعة</button>
+<div class="about"><b>🦪 Oyster Farm Manager</b><span>v1.1.0</span><span id="offline">يعمل بدون إنترنت بعد أول تحميل.</span></div>
+</div></section>
 
-    <nav class="bottom-nav">
-      <button class="nav-item active" data-screen="dashboard"><span>⌂</span><small id="navHome">الرئيسية</small></button>
-      <button class="nav-item" data-screen="calculator"><span>🧮</span><small id="navCalc">الحساب</small></button>
-      <button class="nav-item" data-screen="history"><span>📋</span><small id="navHistory">السجل</small></button>
-      <button class="nav-item" data-screen="settings"><span>⚙️</span><small id="navSettings">الإعدادات</small></button>
-    </nav>
-  </div>
-  <script>const $=s=>document.querySelector(s);
-const $$=s=>document.querySelectorAll(s);
-const state={lang:localStorage.getItem("ofm_lang")||"ar",dark:localStorage.getItem("ofm_dark")==="1",history:JSON.parse(localStorage.getItem("ofm_history")||"[]")};
-const t={
-ar:{subtitle:"إدارة مزرعة المحار",welcome:"لوحة التحكم",heroText:"إدارة بسيطة وسريعة لمراحل تربية المحار.",statOystersLabel:"المحارات الحالية",statBagsLabel:"الجيوب المطلوبة",statTablesLabel:"الطاولات المطلوبة",statMortLabel:"النفوق",goCalc:"حاسبة التقسيم",goCalcSub:"الجيوب والطاولات",goMort:"حاسبة النفوق",goMortSub:"الخسائر والنسبة",goHistory:"السجل",goHistorySub:"آخر العمليات",goSettings:"الإعدادات",goSettingsSub:"اللغة والواجهة",calcTitle:"حاسبة التقسيم",calcDesc:"احسب الجيوب والطاولات المطلوبة.",oystersLabel:"عدد المحارات المتبقية",bagLabel:"المحارات في الجيب",tableLabel:"الجيوب في الطاولة",calcBtn:"احسب الآن",mortTitle:"حاسبة النفوق",mortDesc:"احسب الفاقد ونسبة النفوق.",initialLabel:"العدد عند البداية",currentLabel:"العدد الحالي",mortBtn:"احسب النفوق",historyTitle:"السجل",historyDesc:"آخر الحسابات المحفوظة على الجهاز.",clear:"مسح السجل",settingsTitle:"الإعدادات",settingsDesc:"تخصيص التطبيق.",languageLabel:"اللغة",version:"الإصدار 1.0.0",offline:"يعمل بدون إنترنت بعد التثبيت",navHome:"الرئيسية",navCalc:"الحساب",navHistory:"السجل",navSettings:"الإعدادات",bags:"الجيوب المطلوبة",tables:"الطاولات المطلوبة",capacity:"سعة الطاولة",lost:"المحارات المفقودة",rate:"نسبة النفوق",saved:"تم حفظ العملية",empty:"لا توجد عمليات محفوظة.",confirm:"هل تريد مسح السجل؟"},
-fr:{subtitle:"Gestion de ferme ostréicole",welcome:"Tableau de bord",heroText:"Gestion simple et rapide de l’élevage des huîtres.",statOystersLabel:"Huîtres actuelles",statBagsLabel:"Poches nécessaires",statTablesLabel:"Tables nécessaires",statMortLabel:"Mortalité",goCalc:"Calculateur",goCalcSub:"Poches et tables",goMort:"Mortalité",goMortSub:"Pertes et taux",goHistory:"Historique",goHistorySub:"Dernières opérations",goSettings:"Paramètres",goSettingsSub:"Langue et interface",calcTitle:"Calculateur de répartition",calcDesc:"Calculez les poches et les tables nécessaires.",oystersLabel:"Huîtres restantes",bagLabel:"Huîtres par poche",tableLabel:"Poches par table",calcBtn:"Calculer",mortTitle:"Calculateur de mortalité",mortDesc:"Calculez les pertes et le taux de mortalité.",initialLabel:"Nombre initial",currentLabel:"Nombre actuel",mortBtn:"Calculer la mortalité",historyTitle:"Historique",historyDesc:"Derniers calculs enregistrés sur l’appareil.",clear:"Effacer l’historique",settingsTitle:"Paramètres",settingsDesc:"Personnalisez l’application.",languageLabel:"Langue",version:"Version 1.0.0",offline:"Fonctionne hors ligne après installation",navHome:"Accueil",navCalc:"Calcul",navHistory:"Historique",navSettings:"Paramètres",bags:"Poches nécessaires",tables:"Tables nécessaires",capacity:"Capacité d’une table",lost:"Huîtres perdues",rate:"Taux de mortalité",saved:"Opération enregistrée",empty:"Aucune opération enregistrée.",confirm:"Effacer l’historique ?"},
-en:{subtitle:"Oyster farm management",welcome:"Dashboard",heroText:"Simple and fast management for oyster farming.",statOystersLabel:"Current oysters",statBagsLabel:"Required bags",statTablesLabel:"Required tables",statMortLabel:"Mortality",goCalc:"Calculator",goCalcSub:"Bags and tables",goMort:"Mortality",goMortSub:"Losses and rate",goHistory:"History",goHistorySub:"Recent operations",goSettings:"Settings",goSettingsSub:"Language and interface",calcTitle:"Distribution calculator",calcDesc:"Calculate required bags and tables.",oystersLabel:"Remaining oysters",bagLabel:"Oysters per bag",tableLabel:"Bags per table",calcBtn:"Calculate",mortTitle:"Mortality calculator",mortDesc:"Calculate losses and mortality rate.",initialLabel:"Initial count",currentLabel:"Current count",mortBtn:"Calculate mortality",historyTitle:"History",historyDesc:"Recent calculations saved on this device.",clear:"Clear history",settingsTitle:"Settings",settingsDesc:"Customize the app.",languageLabel:"Language",version:"Version 1.0.0",offline:"Works offline after installation",navHome:"Home",navCalc:"Calculate",navHistory:"History",navSettings:"Settings",bags:"Required bags",tables:"Required tables",capacity:"Table capacity",lost:"Lost oysters",rate:"Mortality rate",saved:"Operation saved",empty:"No saved operations.",confirm:"Clear history?"}
+<nav class="nav"><button class="active" data-go="home">⌂<small id="n1">الرئيسية</small></button><button data-go="calc">🧮<small id="n2">الحساب</small></button><button data-go="history">📋<small id="n3">السجل</small></button><button data-go="settings">⚙️<small id="n4">الإعدادات</small></button></nav>
+</div>
+
+<script>
+const $=s=>document.querySelector(s), $$=s=>document.querySelectorAll(s);
+const langText={
+ar:{subtitle:"إدارة مزرعة المحار",dashboard:"لوحة التحكم",hero:"إدارة مراحل تربية المحار وحساب الجيوب والطاولات.",s1:"المحارات الحالية",s2:"الجيوب المطلوبة",s3:"الطاولات المطلوبة",s4:"النفوق",m1:"حاسبة التقسيم",m1s:"بعد النفوق",m2:"حاسبة النفوق",m2s:"الفاقد والنسبة",m3:"السجل",m3s:"آخر العمليات",m4:"الإعدادات",m4s:"إعدادات المزرعة",ct:"حاسبة التقسيم",cd:"احسب العدد بعد النفوق ثم الجيوب والطاولات.",ol:"🦪 عدد المحارات المتبقية",ml:"📉 نسبة النفوق المتوقعة %",bl:"👜 المحارات في الجيب",tl:"🪜 الجيوب في الطاولة",calc:"احسب الآن",after:"المحارات بعد النفوق",bags:"الجيوب المطلوبة",tables:"الطاولات المطلوبة",lost:"الفاقد المتوقع",mt:"حاسبة النفوق",md:"احسب الفاقد والنسبة.",il:"🦪 العدد عند البداية",cl:"🦪 العدد الحالي",mort:"احسب النفوق",lost2:"المحارات المفقودة",rate:"نسبة النفوق",ht:"السجل",hd:"الحسابات المحفوظة على الجهاز.",clear:"مسح السجل",setT:"الإعدادات",setD:"إعدادات مزرعتك.",langL:"🌐 اللغة",dmL:"📉 النفوق الافتراضي %",dbL:"👜 المحارات الافتراضية في الجيب",dtL:"🪜 الجيوب الافتراضية في الطاولة",save:"حفظ إعدادات المزرعة",offline:"يعمل بدون إنترنت بعد أول تحميل.",stageTitle:"مراحل مزرعتك",st1:"الاستلام",st2:"التقسيم الأول",st3:"مرحلة التربية",stageNote:"هذه المراحل محفوظة كمرجع، ويمكن تطويرها لاحقًا.",empty:"لا توجد عمليات محفوظة.",confirm:"هل تريد مسح السجل؟",saved:"تم حفظ إعدادات المزرعة."},
+fr:{subtitle:"Gestion de ferme ostréicole",dashboard:"Tableau de bord",hero:"Gestion des étapes d’élevage et calcul des poches et tables.",s1:"Huîtres actuelles",s2:"Poches nécessaires",s3:"Tables nécessaires",s4:"Mortalité",m1:"Calculateur",m1s:"Après mortalité",m2:"Mortalité",m2s:"Pertes et taux",m3:"Historique",m3s:"Dernières opérations",m4:"Paramètres",m4s:"Ferme",ct:"Calculateur",cd:"Calculez les huîtres après mortalité puis les poches et tables.",ol:"🦪 Huîtres restantes",ml:"📉 Taux de mortalité prévu %",bl:"👜 Huîtres par poche",tl:"🪜 Poches par table",calc:"Calculer",after:"Huîtres après mortalité",bags:"Poches nécessaires",tables:"Tables nécessaires",lost:"Pertes prévues",mt:"Calculateur de mortalité",md:"Calculez les pertes et le taux.",il:"🦪 Nombre initial",cl:"🦪 Nombre actuel",mort:"Calculer la mortalité",lost2:"Huîtres perdues",rate:"Taux de mortalité",ht:"Historique",hd:"Calculs enregistrés sur l’appareil.",clear:"Effacer l’historique",setT:"Paramètres",setD:"Paramètres de votre ferme.",langL:"🌐 Langue",dmL:"📉 Mortalité par défaut %",dbL:"👜 Huîtres par poche par défaut",dtL:"🪜 Poches par table par défaut",save:"Enregistrer les paramètres",offline:"Fonctionne hors ligne après le premier chargement.",stageTitle:"Étapes de votre ferme",st1:"Réception",st2:"Première répartition",st3:"Élevage",stageNote:"Ces étapes sont conservées comme référence et pourront être développées.",empty:"Aucune opération.",confirm:"Effacer l’historique ?",saved:"Paramètres enregistrés."},
+en:{subtitle:"Oyster farm management",dashboard:"Dashboard",hero:"Manage oyster farming stages and calculate bags and tables.",s1:"Current oysters",s2:"Required bags",s3:"Required tables",s4:"Mortality",m1:"Distribution calculator",m1s:"After mortality",m2:"Mortality calculator",m2s:"Losses and rate",m3:"History",m3s:"Recent operations",m4:"Settings",m4s:"Farm settings",ct:"Distribution calculator",cd:"Calculate oysters after mortality, then bags and tables.",ol:"🦪 Remaining oysters",ml:"📉 Expected mortality %",bl:"👜 Oysters per bag",tl:"🪜 Bags per table",calc:"Calculate",after:"Oysters after mortality",bags:"Required bags",tables:"Required tables",lost:"Expected loss",mt:"Mortality calculator",md:"Calculate losses and rate.",il:"🦪 Initial count",cl:"🦪 Current count",mort:"Calculate mortality",lost2:"Lost oysters",rate:"Mortality rate",ht:"History",hd:"Calculations saved on this device.",clear:"Clear history",setT:"Settings",setD:"Your farm settings.",langL:"🌐 Language",dmL:"📉 Default mortality %",dbL:"👜 Default oysters per bag",dtL:"🪜 Default bags per table",save:"Save farm settings",offline:"Works offline after the first load.",stageTitle:"Your farm stages",st1:"Reception",st2:"First redistribution",st3:"Growing stage",stageNote:"These stages are stored as a reference and can be expanded later.",empty:"No saved operations.",confirm:"Clear history?",saved:"Farm settings saved."}
 };
-function tr(k){return t[state.lang][k]||k}
-function fmt(n){return new Intl.NumberFormat(state.lang==="ar"?"ar-MA":state.lang==="fr"?"fr-FR":"en-US").format(n)}
-function showScreen(id){
-  $$(".screen").forEach(x=>x.classList.toggle("active",x.id===id));
-  $$(".nav-item").forEach(x=>x.classList.toggle("active",x.dataset.screen===id));
-  window.scrollTo(0,0);
-}
-function saveHistory(item){state.history.unshift({...item,date:new Date().toISOString()});state.history=state.history.slice(0,30);localStorage.setItem("ofm_history",JSON.stringify(state.history));renderHistory();}
-function renderHistory(){
-  const box=$("#historyList");
-  if(!state.history.length){box.innerHTML=`<div class="card">${tr("empty")}</div>`;return}
-  box.innerHTML=state.history.map(h=>`<div class="history-item"><time>${new Date(h.date).toLocaleString(state.lang==="ar"?"ar-MA":state.lang==="fr"?"fr-FR":"en-US")}</time><strong>${h.type==="calc"?"🧮 "+tr("goCalc"):"📉 "+tr("goMort")}</strong><div>${h.text}</div></div>`).join("");
-}
-function applyLanguage(){
-  document.documentElement.lang=state.lang;document.documentElement.dir=state.lang==="ar"?"rtl":"ltr";
-  const keys=["subtitle","welcome","heroText","statOystersLabel","statBagsLabel","statTablesLabel","statMortLabel","goCalc","goCalcSub","goMort","goMortSub","goHistory","goHistorySub","goSettings","goSettingsSub","calcTitle","calcDesc","oystersLabel","bagLabel","tableLabel","mortTitle","mortDesc","initialLabel","currentLabel","historyTitle","historyDesc","settingsTitle","settingsDesc","languageLabel","version","offline","navHome","navCalc","navHistory","navSettings"];
-  keys.forEach(k=>{const el=document.getElementById(k);if(el)el.textContent=tr(k)});
-  $("#calculateBtn").textContent=tr("calcBtn");$("#mortalityBtn").textContent=tr("mortBtn");$("#clearHistory").textContent=tr("clear");
-  $("#language").value=state.lang;renderHistory();updateDashboard();
-}
-function updateDashboard(){
-  const d=JSON.parse(localStorage.getItem("ofm_dashboard")||"{}");
-  $("#statOysters").textContent=fmt(d.oysters||0);$("#statBags").textContent=fmt(d.bags||0);$("#statTables").textContent=fmt(d.tables||0);$("#statMort").textContent=(d.mortality||0)+"%";
-}
+let L=localStorage.getItem("ofm_lang")||"ar";
+let history=JSON.parse(localStorage.getItem("ofm_history")||"[]");
+function T(k){return langText[L][k]||k}
+function fmt(n){return new Intl.NumberFormat(L==="ar"?"ar-MA":L==="fr"?"fr-FR":"en-US").format(n)}
+function go(id){$$(".screen").forEach(x=>x.classList.toggle("active",x.id===id));$$(".nav button").forEach(x=>x.classList.toggle("active",x.dataset.go===id));scrollTo(0,0)}
+$$("[data-go]").forEach(b=>b.onclick=()=>go(b.dataset.go));
+function saveHistory(type,text){history.unshift({type,text,date:new Date().toISOString()});history=history.slice(0,30);localStorage.setItem("ofm_history",JSON.stringify(history));renderHistory()}
+function renderHistory(){let box=$("#historyList");if(!history.length){box.innerHTML='<div class="card">'+T("empty")+"</div>";return}box.innerHTML=history.map(x=>'<div class="card"><time>'+new Date(x.date).toLocaleString()+'</time><b>'+ (x.type==="calc"?" 🧮":" 📉")+'</b><div>'+x.text+'</div></div>').join("")}
+function dashboard(){let d=JSON.parse(localStorage.getItem("ofm_dashboard")||"{}");$("#dOysters").textContent=fmt(d.oysters||0);$("#dBags").textContent=fmt(d.bags||0);$("#dTables").textContent=fmt(d.tables||0);$("#dMort").textContent=(d.mortality||0)+"%"}
 function calc(){
-  const oysters=Number($("#oysters").value), bag=Number($("#bagCapacity").value), perTable=Number($("#bagsPerTable").value);
-  if(!(oysters>=0&&bag>0&&perTable>0))return alert(state.lang==="ar"?"أدخل القيم بشكل صحيح.":state.lang==="fr"?"Saisissez des valeurs valides.":"Enter valid values.");
-  const bags=Math.ceil(oysters/bag),tables=Math.ceil(bags/perTable);
-  $("#calcResult").classList.remove("hidden");
-  $("#calcResult").innerHTML=`<div class="result-grid"><div class="result-item"><small>${tr("bags")}</small><b>${fmt(bags)}</b></div><div class="result-item"><small>${tr("tables")}</small><b>${fmt(tables)}</b></div><div class="result-item"><small>${tr("capacity")}</small><b>${fmt(bag*perTable)}</b></div></div>`;
-  localStorage.setItem("ofm_dashboard",JSON.stringify({oysters,bags,tables,mortality:JSON.parse(localStorage.getItem("ofm_dashboard")||"{}").mortality||0}));
-  saveHistory({type:"calc",text:`${fmt(oysters)} 🦪 → ${fmt(bags)} 👜 → ${fmt(tables)} 🪜`});updateDashboard();
+ let o=Number($("#oysters").value),r=Number($("#mortRate").value),b=Number($("#bagCap").value),t=Number($("#bagsTable").value);
+ if(!(o>=0&&r>=0&&r<=100&&b>0&&t>0))return alert("Invalid values");
+ let after=Math.round(o*(1-r/100)),lost=o-after,bags=Math.ceil(after/b),tables=Math.ceil(bags/t);
+ $("#calcResult").style.display="block";$("#calcResult").innerHTML='<div class="grid"><div class="item"><small>'+T("after")+'</small><b>'+fmt(after)+'</b></div><div class="item"><small>'+T("bags")+'</small><b>'+fmt(bags)+'</b></div><div class="item"><small>'+T("tables")+'</small><b>'+fmt(tables)+'</b></div><div class="item"><small>'+T("lost")+'</small><b>'+fmt(lost)+'</b></div></div>';
+ localStorage.setItem("ofm_dashboard",JSON.stringify({oysters:after,bags,tables,mortality:r}));saveHistory("calc",fmt(o)+" → "+r+"% → "+fmt(after)+" 🦪 → "+fmt(bags)+" 👜 → "+fmt(tables)+" 🪜");dashboard()
 }
 function mortality(){
-  const initial=Number($("#initialOysters").value), current=Number($("#currentOysters").value);
-  if(!(initial>0&&current>=0&&current<=initial))return alert(state.lang==="ar"?"تحقق من الأعداد.":state.lang==="fr"?"Vérifiez les nombres.":"Check the numbers.");
-  const lost=initial-current, rate=Math.round((lost/initial)*10000)/100;
-  $("#mortResult").classList.remove("hidden");
-  $("#mortResult").innerHTML=`<div class="result-grid"><div class="result-item"><small>${tr("lost")}</small><b>${fmt(lost)}</b></div><div class="result-item"><small>${tr("rate")}</small><b>${rate}%</b></div></div>`;
-  const d=JSON.parse(localStorage.getItem("ofm_dashboard")||"{}");d.oysters=current;d.mortality=rate;localStorage.setItem("ofm_dashboard",JSON.stringify(d));saveHistory({type:"mort",text:`${fmt(initial)} → ${fmt(current)} | ${fmt(lost)} | ${rate}%`});updateDashboard();
+ let i=Number($("#initial").value),c=Number($("#current").value);if(!(i>0&&c>=0&&c<=i))return alert("Invalid values");
+ let lost=i-c,rate=Math.round(lost/i*10000)/100;$("#mortResult").style.display="block";$("#mortResult").innerHTML='<div class="grid"><div class="item"><small>'+T("lost2")+'</small><b>'+fmt(lost)+'</b></div><div class="item"><small>'+T("rate")+'</small><b>'+rate+'%</b></div></div>';localStorage.setItem("ofm_dashboard",JSON.stringify({...JSON.parse(localStorage.getItem("ofm_dashboard")||"{}"),oysters:c,mortality:rate}));saveHistory("mort",fmt(i)+" → "+fmt(c)+" | "+fmt(lost)+" | "+rate+"%");dashboard()
 }
-$$("[data-screen]").forEach(b=>b.addEventListener("click",()=>showScreen(b.dataset.screen)));
-$("#calculateBtn").addEventListener("click",calc);$("#mortalityBtn").addEventListener("click",mortality);
-$("#clearHistory").addEventListener("click",()=>{if(confirm(tr("confirm"))){state.history=[];localStorage.removeItem("ofm_history");renderHistory()}});
-$("#language").addEventListener("change",e=>{state.lang=e.target.value;localStorage.setItem("ofm_lang",state.lang);applyLanguage()});
-$("#themeBtn").addEventListener("click",()=>{state.dark=!state.dark;document.body.classList.toggle("dark",state.dark);localStorage.setItem("ofm_dark",state.dark?"1":"0")});
-document.body.classList.toggle("dark",state.dark);applyLanguage();
+$("#calcBtn").onclick=calc;$("#mortBtn").onclick=mortality;
+$("#clear").onclick=()=>{if(confirm(T("confirm"))){history=[];localStorage.removeItem("ofm_history");renderHistory()}};
+function apply(){
+ document.documentElement.lang=L;document.documentElement.dir=L==="ar"?"rtl":"ltr";
+ const ids=["subtitle","dashboard","hero","s1","s2","s3","s4","m1","m1s","m2","m2s","m3","m3s","m4","m4s","ct","cd","ol","ml","bl","tl","mt","md","il","cl","ht","hd","setT","setD","langL","dmL","dbL","dtL","offline","stageTitle","st1","st2","st3","stageNote","n1","n2","n3","n4"];
+ ids.forEach(id=>{let e=$("#"+id);if(e)e.textContent=T(id)});
+ $("#calcBtn").textContent=T("calc");$("#mortBtn").textContent=T("mort");$("#clear").textContent=T("clear");$("#save").textContent=T("save");$("#lang").value=L;renderHistory();dashboard()
+}
+$("#lang").onchange=e=>{L=e.target.value;localStorage.setItem("ofm_lang",L);apply()};
+function loadSettings(){let s=JSON.parse(localStorage.getItem("ofm_settings")||"{}");$("#dm").value=s.r||30;$("#db").value=s.b||100;$("#dt").value=s.t||5;$("#mortRate").value=s.r||30;$("#bagCap").value=s.b||100;$("#bagsTable").value=s.t||5}
+$("#save").onclick=()=>{let s={r:Number($("#dm").value),b:Number($("#db").value),t:Number($("#dt").value)};if(!(s.r>=0&&s.r<=100&&s.b>0&&s.t>0))return;localStorage.setItem("ofm_settings",JSON.stringify(s));loadSettings();alert(T("saved"))};
+$("#theme").onclick=()=>{document.body.classList.toggle("dark");localStorage.setItem("ofm_dark",document.body.classList.contains("dark")?"1":"0")};
+if(localStorage.getItem("ofm_dark")==="1")document.body.classList.add("dark");loadSettings();apply();
+if("serviceWorker"in navigator)navigator.serviceWorker.register("service-worker.js");
 </script>
-  <script>
-    if ('serviceWorker' in navigator) window.addEventListener('load', () => navigator.serviceWorker.register('service-worker.js'));
-  </script>
-</body>
-</html>
+</body></html>
