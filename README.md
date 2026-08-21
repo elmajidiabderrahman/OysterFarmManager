@@ -1,7 +1,2 @@
-# Oyster Farm Manager v1.1
-PWA for oyster farm management.
-- Arabic / French / English
-- Mortality-aware bag/table calculation
-- Farm stages: 116 → 300 → 2000 bags
-- Local history and settings
-- Offline PWA
+# Oyster Farm Manager v1.2
+Calcul des poches et tables selon le nombre d'huîtres, mortalité et stade de croissance. Petite: 8000/poche. Finale: 120-140/poche. 5 poches/table. PWA offline, arabe/français/anglais.

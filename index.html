@@ -1,124 +1,41 @@
-<!doctype html>
-<html lang="ar" dir="rtl">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta name="theme-color" content="#087f8c">
-<meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="default">
-<meta name="apple-mobile-web-app-title" content="Oyster Farm Manager">
-<link rel="manifest" href="manifest.json">
-<link rel="apple-touch-icon" href="icon.svg">
+<!doctype html><html lang="ar" dir="rtl"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#087ea4"><link rel="manifest" href="manifest.json">
 <title>Oyster Farm Manager</title>
 <style>
-:root{--bg:#eef8f9;--card:#fff;--text:#12343b;--muted:#6b858b;--primary:#087f8c;--accent:#10aaa6;--border:#d7e8ea;--danger:#b83a4b}
-*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;padding-bottom:82px}.app{max-width:760px;margin:auto}.top{height:70px;background:rgba(255,255,255,.94);border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;padding:10px 16px;position:sticky;top:0;z-index:5}.brand{display:flex;gap:10px;align-items:center}.brand img{width:44px;height:44px}.brand b{display:block}.brand small{color:var(--muted)}button,input,select{font:inherit}button{cursor:pointer}.icon{border:1px solid var(--border);background:var(--card);border-radius:13px;width:42px;height:42px}.screen{display:none;padding:18px}.screen.active{display:block}.hero{padding:22px;border-radius:22px;background:linear-gradient(135deg,#066d79,#10aaa6);color:#fff;margin-bottom:14px}.hero h1{margin:4px 0 6px;font-size:27px}.hero p{margin:0;opacity:.9}.stats{display:grid;grid-template-columns:1fr 1fr;gap:10px}.stat,.card,.menu{background:var(--card);border:1px solid var(--border);border-radius:18px;padding:15px;box-shadow:0 8px 24px rgba(10,80,90,.07)}.stat small{display:block;color:var(--muted);margin:6px 0}.stat b{font-size:21px}.menus{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:12px}.menu{border:0;text-align:right;color:var(--text)}.menu span{font-size:24px;display:block;margin-bottom:9px}.menu small{display:block;color:var(--muted);margin-top:3px}.head{display:flex;gap:10px;align-items:center;margin-bottom:15px}.back{border:1px solid var(--border);background:var(--card);border-radius:12px;width:44px;height:44px;font-size:28px}.head h2{margin:0}.head p{margin:3px 0;color:var(--muted)}label{display:block;font-weight:700;margin:0 0 6px}input,select{width:100%;padding:13px;border:1px solid #c8dfe2;border-radius:12px;background:var(--bg);color:var(--text);margin-bottom:13px}.primary,.danger{width:100%;padding:13px;border:0;border-radius:13px;color:#fff;font-weight:800}.primary{background:linear-gradient(135deg,var(--primary),var(--accent))}.danger{background:var(--danger);margin-top:12px}.result{margin-top:13px}.grid{display:grid;grid-template-columns:1fr 1fr;gap:9px}.item{background:var(--bg);border-radius:13px;padding:12px}.item small{display:block;color:var(--muted);margin-bottom:4px}.item b{font-size:20px}.stage{display:flex;justify-content:space-between;padding:11px 0;border-bottom:1px solid var(--border)}.stage:last-child{border:0}.note{color:var(--muted);font-size:13px;line-height:1.6}.history{display:grid;gap:9px}.history .card{box-shadow:none}.history time{font-size:11px;color:var(--muted)}.about{margin-top:12px;background:var(--bg);border-radius:13px;padding:13px}.about>*{display:block;margin:4px 0}.about span{color:var(--muted);font-size:13px}.nav{position:fixed;bottom:0;left:0;right:0;max-width:760px;margin:auto;height:70px;background:rgba(255,255,255,.96);border-top:1px solid var(--border);display:grid;grid-template-columns:repeat(4,1fr);z-index:9}.nav button{border:0;background:transparent;color:var(--muted);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px}.nav button.active{color:var(--primary);font-weight:800}.dark{--bg:#0b2024;--card:#122c31;--text:#e8f6f7;--muted:#9ab6bb;--border:#27484e}.dark .top,.dark .nav{background:rgba(18,44,49,.96)}
-@media(min-width:650px){.stats{grid-template-columns:repeat(4,1fr)}.menus{grid-template-columns:repeat(4,1fr)}}
-</style>
-</head>
-<body>
-<div class="app">
-<header class="top"><div class="brand"><img src="icon.svg"><div><b>Oyster Farm Manager</b><small id="subtitle">إدارة مزرعة المحار</small></div></div><button class="icon" id="theme">◐</button></header>
-
-<section id="home" class="screen active">
-<div class="hero"><small id="dashboard">لوحة التحكم</small><h1>Oyster Farm Manager</h1><p id="hero">إدارة مراحل تربية المحار وحساب الجيوب والطاولات.</p></div>
-<div class="stats">
-<div class="stat">🦪<small id="s1">المحارات الحالية</small><b id="dOysters">0</b></div>
-<div class="stat">👜<small id="s2">الجيوب المطلوبة</small><b id="dBags">0</b></div>
-<div class="stat">🪜<small id="s3">الطاولات المطلوبة</small><b id="dTables">0</b></div>
-<div class="stat">📉<small id="s4">النفوق</small><b id="dMort">0%</b></div>
-</div>
-<div class="menus">
-<button class="menu" data-go="calc">🧮<b id="m1">حاسبة التقسيم</b><small id="m1s">بعد النفوق</small></button>
-<button class="menu" data-go="mort">📉<b id="m2">حاسبة النفوق</b><small id="m2s">الفاقد والنسبة</small></button>
-<button class="menu" data-go="history">📋<b id="m3">السجل</b><small id="m3s">آخر العمليات</small></button>
-<button class="menu" data-go="settings">⚙️<b id="m4">الإعدادات</b><small id="m4s">إعدادات المزرعة</small></button>
-</div></section>
-
-<section id="calc" class="screen">
-<div class="head"><button class="back" data-go="home">‹</button><div><h2 id="ct">حاسبة التقسيم</h2><p id="cd">احسب العدد بعد النفوق ثم الجيوب والطاولات.</p></div></div>
-<div class="card">
-<label id="ol">🦪 عدد المحارات المتبقية</label><input id="oysters" type="number" min="0" inputmode="numeric" placeholder="700000">
-<label id="ml">📉 نسبة النفوق المتوقعة %</label><input id="mortRate" type="number" min="0" max="100" step="0.1" value="30">
-<label id="bl">👜 المحارات في الجيب</label><input id="bagCap" type="number" min="1" value="100">
-<label id="tl">🪜 الجيوب في الطاولة</label><input id="bagsTable" type="number" min="1" value="5">
-<button class="primary" id="calcBtn">احسب الآن</button>
-</div>
-<div class="card result" id="calcResult" style="display:none"></div>
-<div class="card result">
-<h3 id="stageTitle">مراحل مزرعتك</h3>
-<div class="stage"><b id="st1">الاستلام</b><span>116 جيب</span></div>
-<div class="stage"><b id="st2">التقسيم الأول</b><span>300 جيب</span></div>
-<div class="stage"><b id="st3">مرحلة التربية</b><span>2000 جيب</span></div>
-<p class="note" id="stageNote">هذه المراحل محفوظة كمرجع، ويمكن تطويرها لاحقًا.</p>
-</div>
+body{font-family:-apple-system,BlinkMacSystemFont,Arial;margin:0;background:#f3f8fa;color:#12313b}
+header{background:#087ea4;color:white;padding:28px 15px;text-align:center}main{max-width:650px;margin:auto;padding:15px}
+.card{background:white;padding:18px;margin:12px 0;border-radius:18px;box-shadow:0 3px 15px #0001}
+label{display:block;font-weight:bold;margin:12px 0 6px}input,select,button{width:100%;padding:13px;border-radius:12px;border:1px solid #ccdce1;font-size:16px;box-sizing:border-box}
+button{background:#087ea4;color:white;border:0;font-weight:bold;margin-top:15px}.langs{display:flex;gap:7px}.langs button{background:white;color:#12313b;border:1px solid #ccdce1;margin:0}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}.item{padding:12px;background:#eef8fb;border-radius:12px;text-align:center}.item small{display:block}.item b{font-size:21px}
+#result{margin-top:15px;padding:14px;background:#eaf7fa;border-radius:14px}footer{text-align:center;color:#789;padding:15px;font-size:12px}
+</style></head><body>
+<header><h1>🦪 Oyster Farm Manager</h1><div id="sub">حساب الجيوب والطاولات حسب مرحلة النمو</div></header>
+<main>
+<div class="langs"><button onclick="setLang('ar')">العربية</button><button onclick="setLang('fr')">Français</button><button onclick="setLang('en')">English</button></div>
+<section class="card">
+<h2 id="title">🧮 حساب الاحتياج</h2>
+<label id="ol">عدد المحار الحالي</label><input id="o" type="number" value="1000000" min="0">
+<label id="ml">نسبة النفوق %</label><input id="m" type="number" value="30" min="0" max="100">
+<label id="sl">مرحلة التربية</label>
+<select id="s" onchange="stage()"><option value="small">محار صغير — حتى 8000 / جيب</option><option value="grow">مرحلة النمو — أدخل السعة الحالية</option><option value="large">محار كبير — 120 إلى 140 / جيب</option></select>
+<div id="capbox" style="display:none"><label id="cl">السعة الحالية للجيب</label><input id="cap" type="number" value="1000" min="1"></div>
+<label id="tl">الجيوب في كل طاولة</label><input id="t" type="number" value="5" min="1">
+<button onclick="calc()" id="cb">احسب الآن</button><div id="result"></div>
 </section>
-
-<section id="mort" class="screen">
-<div class="head"><button class="back" data-go="home">‹</button><div><h2 id="mt">حاسبة النفوق</h2><p id="md">احسب الفاقد والنسبة.</p></div></div>
-<div class="card"><label id="il">🦪 العدد عند البداية</label><input id="initial" type="number" min="0" value="1000000"><label id="cl">🦪 العدد الحالي</label><input id="current" type="number" min="0"><button class="primary" id="mortBtn">احسب النفوق</button></div>
-<div class="card result" id="mortResult" style="display:none"></div>
-</section>
-
-<section id="history" class="screen">
-<div class="head"><button class="back" data-go="home">‹</button><div><h2 id="ht">السجل</h2><p id="hd">الحسابات المحفوظة على الجهاز.</p></div></div>
-<div class="history" id="historyList"></div><button class="danger" id="clear">مسح السجل</button>
-</section>
-
-<section id="settings" class="screen">
-<div class="head"><button class="back" data-go="home">‹</button><div><h2 id="setT">الإعدادات</h2><p id="setD">إعدادات مزرعتك.</p></div></div>
-<div class="card">
-<label id="langL">🌐 اللغة</label><select id="lang"><option value="ar">العربية</option><option value="fr">Français</option><option value="en">English</option></select>
-<label id="dmL">📉 النفوق الافتراضي %</label><input id="dm" type="number" value="30" min="0" max="100" step=".1">
-<label id="dbL">👜 المحارات الافتراضية في الجيب</label><input id="db" type="number" value="100" min="1">
-<label id="dtL">🪜 الجيوب الافتراضية في الطاولة</label><input id="dt" type="number" value="5" min="1">
-<button class="primary" id="save">حفظ إعدادات المزرعة</button>
-<div class="about"><b>🦪 Oyster Farm Manager</b><span>v1.1.0</span><span id="offline">يعمل بدون إنترنت بعد أول تحميل.</span></div>
-</div></section>
-
-<nav class="nav"><button class="active" data-go="home">⌂<small id="n1">الرئيسية</small></button><button data-go="calc">🧮<small id="n2">الحساب</small></button><button data-go="history">📋<small id="n3">السجل</small></button><button data-go="settings">⚙️<small id="n4">الإعدادات</small></button></nav>
-</div>
-
+<section class="card"><h2 id="it">📋 مراحل التربية</h2><p id="info">الصغير حتى 8000 في الجيب. في النمو أدخل السعة الحالية. عند الحجم النهائي 120–140 في الجيب. كل طاولة فيها 5 جيوب.</p></section>
+</main><footer>يعمل بدون إنترنت • PWA</footer>
 <script>
-const $=s=>document.querySelector(s), $$=s=>document.querySelectorAll(s);
-const langText={
-ar:{subtitle:"إدارة مزرعة المحار",dashboard:"لوحة التحكم",hero:"إدارة مراحل تربية المحار وحساب الجيوب والطاولات.",s1:"المحارات الحالية",s2:"الجيوب المطلوبة",s3:"الطاولات المطلوبة",s4:"النفوق",m1:"حاسبة التقسيم",m1s:"بعد النفوق",m2:"حاسبة النفوق",m2s:"الفاقد والنسبة",m3:"السجل",m3s:"آخر العمليات",m4:"الإعدادات",m4s:"إعدادات المزرعة",ct:"حاسبة التقسيم",cd:"احسب العدد بعد النفوق ثم الجيوب والطاولات.",ol:"🦪 عدد المحارات المتبقية",ml:"📉 نسبة النفوق المتوقعة %",bl:"👜 المحارات في الجيب",tl:"🪜 الجيوب في الطاولة",calc:"احسب الآن",after:"المحارات بعد النفوق",bags:"الجيوب المطلوبة",tables:"الطاولات المطلوبة",lost:"الفاقد المتوقع",mt:"حاسبة النفوق",md:"احسب الفاقد والنسبة.",il:"🦪 العدد عند البداية",cl:"🦪 العدد الحالي",mort:"احسب النفوق",lost2:"المحارات المفقودة",rate:"نسبة النفوق",ht:"السجل",hd:"الحسابات المحفوظة على الجهاز.",clear:"مسح السجل",setT:"الإعدادات",setD:"إعدادات مزرعتك.",langL:"🌐 اللغة",dmL:"📉 النفوق الافتراضي %",dbL:"👜 المحارات الافتراضية في الجيب",dtL:"🪜 الجيوب الافتراضية في الطاولة",save:"حفظ إعدادات المزرعة",offline:"يعمل بدون إنترنت بعد أول تحميل.",stageTitle:"مراحل مزرعتك",st1:"الاستلام",st2:"التقسيم الأول",st3:"مرحلة التربية",stageNote:"هذه المراحل محفوظة كمرجع، ويمكن تطويرها لاحقًا.",empty:"لا توجد عمليات محفوظة.",confirm:"هل تريد مسح السجل؟",saved:"تم حفظ إعدادات المزرعة."},
-fr:{subtitle:"Gestion de ferme ostréicole",dashboard:"Tableau de bord",hero:"Gestion des étapes d’élevage et calcul des poches et tables.",s1:"Huîtres actuelles",s2:"Poches nécessaires",s3:"Tables nécessaires",s4:"Mortalité",m1:"Calculateur",m1s:"Après mortalité",m2:"Mortalité",m2s:"Pertes et taux",m3:"Historique",m3s:"Dernières opérations",m4:"Paramètres",m4s:"Ferme",ct:"Calculateur",cd:"Calculez les huîtres après mortalité puis les poches et tables.",ol:"🦪 Huîtres restantes",ml:"📉 Taux de mortalité prévu %",bl:"👜 Huîtres par poche",tl:"🪜 Poches par table",calc:"Calculer",after:"Huîtres après mortalité",bags:"Poches nécessaires",tables:"Tables nécessaires",lost:"Pertes prévues",mt:"Calculateur de mortalité",md:"Calculez les pertes et le taux.",il:"🦪 Nombre initial",cl:"🦪 Nombre actuel",mort:"Calculer la mortalité",lost2:"Huîtres perdues",rate:"Taux de mortalité",ht:"Historique",hd:"Calculs enregistrés sur l’appareil.",clear:"Effacer l’historique",setT:"Paramètres",setD:"Paramètres de votre ferme.",langL:"🌐 Langue",dmL:"📉 Mortalité par défaut %",dbL:"👜 Huîtres par poche par défaut",dtL:"🪜 Poches par table par défaut",save:"Enregistrer les paramètres",offline:"Fonctionne hors ligne après le premier chargement.",stageTitle:"Étapes de votre ferme",st1:"Réception",st2:"Première répartition",st3:"Élevage",stageNote:"Ces étapes sont conservées comme référence et pourront être développées.",empty:"Aucune opération.",confirm:"Effacer l’historique ?",saved:"Paramètres enregistrés."},
-en:{subtitle:"Oyster farm management",dashboard:"Dashboard",hero:"Manage oyster farming stages and calculate bags and tables.",s1:"Current oysters",s2:"Required bags",s3:"Required tables",s4:"Mortality",m1:"Distribution calculator",m1s:"After mortality",m2:"Mortality calculator",m2s:"Losses and rate",m3:"History",m3s:"Recent operations",m4:"Settings",m4s:"Farm settings",ct:"Distribution calculator",cd:"Calculate oysters after mortality, then bags and tables.",ol:"🦪 Remaining oysters",ml:"📉 Expected mortality %",bl:"👜 Oysters per bag",tl:"🪜 Bags per table",calc:"Calculate",after:"Oysters after mortality",bags:"Required bags",tables:"Required tables",lost:"Expected loss",mt:"Mortality calculator",md:"Calculate losses and rate.",il:"🦪 Initial count",cl:"🦪 Current count",mort:"Calculate mortality",lost2:"Lost oysters",rate:"Mortality rate",ht:"History",hd:"Calculations saved on this device.",clear:"Clear history",setT:"Settings",setD:"Your farm settings.",langL:"🌐 Language",dmL:"📉 Default mortality %",dbL:"👜 Default oysters per bag",dtL:"🪜 Default bags per table",save:"Save farm settings",offline:"Works offline after the first load.",stageTitle:"Your farm stages",st1:"Reception",st2:"First redistribution",st3:"Growing stage",stageNote:"These stages are stored as a reference and can be expanded later.",empty:"No saved operations.",confirm:"Clear history?",saved:"Farm settings saved."}
+let L='ar';
+const T={
+ar:{sub:'حساب الجيوب والطاولات حسب مرحلة النمو',title:'🧮 حساب الاحتياج',ol:'عدد المحار الحالي',ml:'نسبة النفوق %',sl:'مرحلة التربية',cl:'السعة الحالية للجيب',tl:'الجيوب في كل طاولة',cb:'احسب الآن',it:'📋 مراحل التربية',info:'الصغير حتى 8000 في الجيب. في النمو أدخل السعة الحالية. عند الحجم النهائي 120–140 في الجيب. كل طاولة فيها 5 جيوب.',after:'المحار بعد النفوق',lost:'النفوق المتوقع',bags:'الجيوب المطلوبة',tables:'الطاولات المطلوبة',cap:'سعة الجيب',note:'لأن السعة النهائية بين 120 و140، النتيجة نطاق.'},
+fr:{sub:'Calcul des poches et tables selon la croissance',title:'🧮 Calcul',ol:"Nombre d'huîtres actuel",ml:'Mortalité %',sl:"Stade d'élevage",cl:'Capacité actuelle de la poche',tl:'Poches par table',cb:'Calculer',it:"📋 Stades d'élevage",info:'Petites jusqu’à 8000/poche. En croissance, saisir la capacité. Final 120–140/poche. 5 poches par table.',after:'Après mortalité',lost:'Mortalité prévue',bags:'Poches nécessaires',tables:'Tables nécessaires',cap:'Capacité/poche',note:'La capacité finale étant 120–140, le résultat est une fourchette.'},
+en:{sub:'Calculate pockets and tables by growth stage',title:'🧮 Capacity calculator',ol:'Current oysters',ml:'Mortality %',sl:'Growing stage',cl:'Current pocket capacity',tl:'Pockets per table',cb:'Calculate',it:'📋 Growing stages',info:'Small up to 8,000/pocket. During growth, enter current capacity. Final 120–140/pocket. 5 pockets per table.',after:'After mortality',lost:'Expected mortality',bags:'Pockets needed',tables:'Tables needed',cap:'Pocket capacity',note:'Final capacity is 120–140, so the result is a range.'}
 };
-let L=localStorage.getItem("ofm_lang")||"ar";
-let history=JSON.parse(localStorage.getItem("ofm_history")||"[]");
-function T(k){return langText[L][k]||k}
-function fmt(n){return new Intl.NumberFormat(L==="ar"?"ar-MA":L==="fr"?"fr-FR":"en-US").format(n)}
-function go(id){$$(".screen").forEach(x=>x.classList.toggle("active",x.id===id));$$(".nav button").forEach(x=>x.classList.toggle("active",x.dataset.go===id));scrollTo(0,0)}
-$$("[data-go]").forEach(b=>b.onclick=()=>go(b.dataset.go));
-function saveHistory(type,text){history.unshift({type,text,date:new Date().toISOString()});history=history.slice(0,30);localStorage.setItem("ofm_history",JSON.stringify(history));renderHistory()}
-function renderHistory(){let box=$("#historyList");if(!history.length){box.innerHTML='<div class="card">'+T("empty")+"</div>";return}box.innerHTML=history.map(x=>'<div class="card"><time>'+new Date(x.date).toLocaleString()+'</time><b>'+ (x.type==="calc"?" 🧮":" 📉")+'</b><div>'+x.text+'</div></div>').join("")}
-function dashboard(){let d=JSON.parse(localStorage.getItem("ofm_dashboard")||"{}");$("#dOysters").textContent=fmt(d.oysters||0);$("#dBags").textContent=fmt(d.bags||0);$("#dTables").textContent=fmt(d.tables||0);$("#dMort").textContent=(d.mortality||0)+"%"}
-function calc(){
- let o=Number($("#oysters").value),r=Number($("#mortRate").value),b=Number($("#bagCap").value),t=Number($("#bagsTable").value);
- if(!(o>=0&&r>=0&&r<=100&&b>0&&t>0))return alert("Invalid values");
- let after=Math.round(o*(1-r/100)),lost=o-after,bags=Math.ceil(after/b),tables=Math.ceil(bags/t);
- $("#calcResult").style.display="block";$("#calcResult").innerHTML='<div class="grid"><div class="item"><small>'+T("after")+'</small><b>'+fmt(after)+'</b></div><div class="item"><small>'+T("bags")+'</small><b>'+fmt(bags)+'</b></div><div class="item"><small>'+T("tables")+'</small><b>'+fmt(tables)+'</b></div><div class="item"><small>'+T("lost")+'</small><b>'+fmt(lost)+'</b></div></div>';
- localStorage.setItem("ofm_dashboard",JSON.stringify({oysters:after,bags,tables,mortality:r}));saveHistory("calc",fmt(o)+" → "+r+"% → "+fmt(after)+" 🦪 → "+fmt(bags)+" 👜 → "+fmt(tables)+" 🪜");dashboard()
-}
-function mortality(){
- let i=Number($("#initial").value),c=Number($("#current").value);if(!(i>0&&c>=0&&c<=i))return alert("Invalid values");
- let lost=i-c,rate=Math.round(lost/i*10000)/100;$("#mortResult").style.display="block";$("#mortResult").innerHTML='<div class="grid"><div class="item"><small>'+T("lost2")+'</small><b>'+fmt(lost)+'</b></div><div class="item"><small>'+T("rate")+'</small><b>'+rate+'%</b></div></div>';localStorage.setItem("ofm_dashboard",JSON.stringify({...JSON.parse(localStorage.getItem("ofm_dashboard")||"{}"),oysters:c,mortality:rate}));saveHistory("mort",fmt(i)+" → "+fmt(c)+" | "+fmt(lost)+" | "+rate+"%");dashboard()
-}
-$("#calcBtn").onclick=calc;$("#mortBtn").onclick=mortality;
-$("#clear").onclick=()=>{if(confirm(T("confirm"))){history=[];localStorage.removeItem("ofm_history");renderHistory()}};
-function apply(){
- document.documentElement.lang=L;document.documentElement.dir=L==="ar"?"rtl":"ltr";
- const ids=["subtitle","dashboard","hero","s1","s2","s3","s4","m1","m1s","m2","m2s","m3","m3s","m4","m4s","ct","cd","ol","ml","bl","tl","mt","md","il","cl","ht","hd","setT","setD","langL","dmL","dbL","dtL","offline","stageTitle","st1","st2","st3","stageNote","n1","n2","n3","n4"];
- ids.forEach(id=>{let e=$("#"+id);if(e)e.textContent=T(id)});
- $("#calcBtn").textContent=T("calc");$("#mortBtn").textContent=T("mort");$("#clear").textContent=T("clear");$("#save").textContent=T("save");$("#lang").value=L;renderHistory();dashboard()
-}
-$("#lang").onchange=e=>{L=e.target.value;localStorage.setItem("ofm_lang",L);apply()};
-function loadSettings(){let s=JSON.parse(localStorage.getItem("ofm_settings")||"{}");$("#dm").value=s.r||30;$("#db").value=s.b||100;$("#dt").value=s.t||5;$("#mortRate").value=s.r||30;$("#bagCap").value=s.b||100;$("#bagsTable").value=s.t||5}
-$("#save").onclick=()=>{let s={r:Number($("#dm").value),b:Number($("#db").value),t:Number($("#dt").value)};if(!(s.r>=0&&s.r<=100&&s.b>0&&s.t>0))return;localStorage.setItem("ofm_settings",JSON.stringify(s));loadSettings();alert(T("saved"))};
-$("#theme").onclick=()=>{document.body.classList.toggle("dark");localStorage.setItem("ofm_dark",document.body.classList.contains("dark")?"1":"0")};
-if(localStorage.getItem("ofm_dark")==="1")document.body.classList.add("dark");loadSettings();apply();
-if("serviceWorker"in navigator)navigator.serviceWorker.register("service-worker.js");
-</script>
-</body></html>
+function setLang(x){L=x;document.documentElement.lang=x;document.documentElement.dir=x==='ar'?'rtl':'ltr';for(let id of ['sub','title','ol','ml','sl','cl','tl','cb','it','info'])document.getElementById(id).textContent=T[x][id];document.getElementById('s').options[0].textContent=x==='ar'?'محار صغير — حتى 8000 / جيب':x==='fr'?'Petites huîtres — jusqu’à 8000 / poche':'Small oysters — up to 8,000 / pocket';document.getElementById('s').options[1].textContent=x==='ar'?'مرحلة النمو — أدخل السعة الحالية':x==='fr'?'Croissance — saisir la capacité':'Growing stage — enter capacity';document.getElementById('s').options[2].textContent=x==='ar'?'محار كبير — 120 إلى 140 / جيب':x==='fr'?'Grosses huîtres — 120 à 140 / poche':'Large oysters — 120 to 140 / pocket'}
+function stage(){document.getElementById('capbox').style.display=document.getElementById('s').value==='grow'?'block':'none'}
+function fmt(n){return new Intl.NumberFormat(L==='ar'?'ar-MA':L==='fr'?'fr-FR':'en-US').format(n)}
+function calc(){let n=+o.value,m=+document.getElementById('m').value,t=+document.getElementById('t').value,s=document.getElementById('s').value;if(n<0||m<0||m>100||t<1)return;let after=Math.round(n*(1-m/100)),lost=n-after,lo,hi;if(s==='small')lo=hi=8000;else if(s==='large'){lo=120;hi=140}else lo=hi=Math.max(1,+document.getElementById('cap').value);let bl=Math.ceil(after/hi),bh=Math.ceil(after/lo),tl=Math.ceil(bl/t),th=Math.ceil(bh/t);let bags=bl===bh?fmt(bl):fmt(bl)+' – '+fmt(bh),tables=tl===th?fmt(tl):fmt(tl)+' – '+fmt(th);result.innerHTML='<div class="grid"><div class="item"><small>'+T[L].after+'</small><b>'+fmt(after)+'</b></div><div class="item"><small>'+T[L].lost+'</small><b>'+fmt(lost)+'</b></div><div class="item"><small>'+T[L].bags+'</small><b>'+bags+'</b></div><div class="item"><small>'+T[L].tables+'</small><b>'+tables+'</b></div><div class="item"><small>'+T[L].cap+'</small><b>'+fmt(lo)+(lo!==hi?' – '+fmt(hi):'')+'</b></div></div>'+(s==='large'?'<p>'+T[L].note+'</p>':'')}
+setLang('ar');stage();calc();
+</script><script>if('serviceWorker'in navigator)navigator.serviceWorker.register('service-worker.js')</script></body></html>
