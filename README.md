@@ -1,2 +1,2 @@
-# Oyster Farm Manager v1.2
-Calcul des poches et tables selon le nombre d'huîtres, mortalité et stade de croissance. Petite: 8000/poche. Finale: 120-140/poche. 5 poches/table. PWA offline, arabe/français/anglais.
+# Oyster Farm Manager v1.3
+مرحلة صغيرة 8000/جيب، مراحل وسطية قابلة للإضافة والتعديل، ومرحلة نهائية 120–140/جيب. يحسب الجيوب والطاولات لكل مرحلة. 5 جيوب/طاولة افتراضياً. عربي/فرنسي/إنجليزي وPWA دون إنترنت.
