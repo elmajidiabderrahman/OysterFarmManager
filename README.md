@@ -1,7 +1,0 @@
-Oyster Farm Manager v1.5
-تضيف هذه النسخة نسبة نفوق مستقلة لكل مرحلة. تُحسب الجيوب حسب عدد المحار الداخل إلى المرحلة، ثم يُحسب الباقي بعد النفوق لينتقل إلى المرحلة التالية. السعة الصغيرة 8000 والنهائية 120–140 محارة/جيب. المراحل الوسطية قابلة للتعديل. خمس جيوب لكل طاولة افتراضياً. العربية والفرنسية والإنجليزية، PWA.
-
-الإصدار 1.5: إضافة حفظ خطط التربية محلياً على الجهاز، مع إمكانية فتح الخطة المحفوظة أو حذفها. الخطط تبقى على الجهاز نفسه والمتصفح نفسه.
-
-
-Version 1.5.1: per-stage mortality percentage is editable for every growth stage; the calculation now also displays the number of oysters lost at each stage, survivors passed to the next stage, and final survivors.
